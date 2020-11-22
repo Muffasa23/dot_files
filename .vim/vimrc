@@ -1,0 +1,226 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-plug (https://github.com/junegunn/vim-plug)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+Plug 'sainnhe/gruvbox-material' " themes
+Plug 'KabbAmine/yowish.vim'
+Plug 'jacoborus/tender.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'dracula/vim'
+Plug 'joshdick/onedark.vim'
+Plug 'crusoexia/vim-monokai'
+
+Plug 'sheerun/vim-polyglot'    " Better syntax highlighting
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+Plug 'scrooloose/nerdtree'     " File manager
+Plug 'vifm/vifm.vim'
+
+Plug 'derekwyatt/vim-fswitch'  " For C/C++
+Plug 'kshenoy/vim-signature'
+Plug 'Yggdroot/LeaderF'
+Plug 'preservim/nerdcommenter'
+Plug 'dense-analysis/ale'
+Plug 'mhinz/vim-signify'
+
+Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'itchyny/lightline.vim'
+call plug#end()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set noerrorbells
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Status line (Powered by lightline plugin)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lightline = {
+    \ 'colorscheme': 'jellybeans',
+    \ }
+
+set laststatus=2                " Always show status line
+set t_Co=256                    " Use 256 colors
+set noshowmode                  " Will not show insert/visual text below
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Theme and background
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable                   " highlight syntax
+syntax on                       " replace default
+set background=dark
+colorscheme monokai
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => File manager
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" autocmd vimenter * NERDTree     "Open NERDTree automatically
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif   " Close if only NERDTree is left 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Programming language
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype on                     " Detect file type
+filetype plugin on              " And load correct plugins
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Better editing
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set relativenumber
+set nu
+set cursorline
+set cursorcolumn
+set ruler                       " Show current position
+set colorcolumn=80
+set showmatch                   " Show the matching parenthesis
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Folding
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set foldmethod=indent
+set foldmethod=syntax
+set nofoldenable
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Remap Keys
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Remap ESC to ii
+:imap ii <Esc>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set ignorecase
+set incsearch
+set hlsearch
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Splits and Tabbed Files
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set splitbelow splitright
+
+set path+=**					" Searches current directory recursively.
+set wildmenu					" Display all matches when tab complete.
+set nobackup
+set noswapfile
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype indent on
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4                ">>
+set tabstop=4
+
+" Indent Guides plugin
+" not sure why ugly color
+"let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_auto_colors = 0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => C/C++
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" switch between *.cpp and *.h, powered by fswitch
+nmap <silent> <Leader>sw :FSHere<cr>
+
+" tags 
+set tags=./.tags;,.tags             " ; means if current dir not found, find in parent directory
+nmap <Leader>tn :tnext<CR>          " iterate the same-name tags
+nmap <Leader>tp :tprevious<CR>
+
+" Leaderf
+" Faster than Ctrlp/Fzf for fuzzy search in/between files
+let g:Lf_ShortcutF = '<c-p>'
+let g:Lf_ShortcutB = '<m-n>'
+noremap <c-n> :LeaderfMru<cr>
+noremap <c-p> :LeaderfFunction!<cr>
+noremap <m-n> :LeaderfBuffer<cr>
+noremap <c-m> :LeaderfTag<cr>
+let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+
+let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WindowHeight = 0.30
+let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_ShowRelativePath = 0
+let g:Lf_HideHelp = 1
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+
+" nerd commenter
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+" ale plugin (check syntax and linter)
+let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+
+let g:ale_sign_error = "\ue009\ue009"
+hi! clear SpellBad
+hi! clear SpellCap
+hi! clear SpellRare
+hi! SpellBad gui=undercurl guisp=red
+hi! SpellCap gui=undercurl guisp=blue
+hi! SpellRare gui=undercurl guisp=magenta
+
+" cpp enhanced highlight
+" let g:cpp_class_scope_highlight = 1
+" let g:cpp_member_variable_highlight = 1
+" let g:cpp_class_decl_highlight = 1
+" let g:cpp_posix_standard = 1
+" let g:cpp_experimental_template_highlight = 1
+" let g:cpp_no_function_highlight = 1            " user-defined functions
+
+
+
+
+" vim settings can be changed immediately
+" don't know why the status line color will disappear after :w
+autocmd BufWritePost ~/.vim/vimrc source ~/.vim/vimrc
