@@ -1,12 +1,14 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set noerrorbells
 set term=screen-256color        " for tmux no color problem
+"set spell spelllang=en_us       " highlight wrong-spelled words
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Better editing
@@ -16,7 +18,7 @@ set nu
 set cursorline
 set cursorcolumn
 set ruler                       " Show current position
-set colorcolumn=80
+"set colorcolumn=80
 set showmatch                   " Show the matching parenthesis
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
