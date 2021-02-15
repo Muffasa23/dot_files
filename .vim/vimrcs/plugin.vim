@@ -69,7 +69,7 @@ Plug 'dense-analysis/ale'
 " Plug 'maximbaz/lightline-ale'
 
 " File manager
-Plug 'vifm/vifm.vim'
+" Plug 'vifm/vifm.vim'
 Plug 'Yggdroot/LeaderF'
 
 " C/C++/Python IDE
