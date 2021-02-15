@@ -91,7 +91,7 @@ Plug 'godlygeek/tabular'        " align
 Plug 'jiangmiao/auto-pairs'     " insert or delete pairs of brackets
 Plug 'tpope/vim-surround'       " change text in pairs of brackets
 
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " vim-plug does not require any extra statement other than plug#begin()
@@ -127,13 +127,13 @@ colorscheme one
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status line (Powered by lightline plugin)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lightline = {
-    \ 'colorscheme': 'iceberg',
-    \ }
+" let g:lightline = {
+"     \ 'colorscheme': 'challenger_deep',
+"     \ }
 
-set laststatus=2                " Always show status line
+" set laststatus=2                " Always show status line
 set t_Co=256                    " Use 256 colors
-set noshowmode                  " Will not show insert/visual text below
+" set noshowmode                  " Will not show insert/visual text below
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => indentline
