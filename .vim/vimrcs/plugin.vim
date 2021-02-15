@@ -56,10 +56,10 @@ Plug 'zacanger/angr.vim'
 Plug 'romainl/Apprentice'
 Plug 'gregsexton/Atom'
 Plug 'wadackel/vim-dogrun'
-Plug 'altercation/vim-colors-solarized'
 Plug 'rakr/vim-colors-rakr'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'sjl/badwolf'
+Plug 'lifepillar/vim-solarized8'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'    " Better syntax highlighting
@@ -104,6 +104,8 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable                   " highlight syntax
 syntax on                       " replace default
+let g:alduin_Shout_Become_Ethereal = 1
+let g:alduin_Shout_Fire_Breath = 1
 let g:PaperColor_Theme_Options = {
   \   'language': {
   \     'python': {
@@ -122,7 +124,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 set background=dark
-colorscheme one
+colorscheme alduin
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status line (Powered by lightline plugin)
