@@ -20,6 +20,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 " Themes
+Plug 'dracula/vim', { 'as': 'dracula'  }
 Plug 'liuchengxu/space-vim-dark'
 Plug 'jaredgorski/spacecamp'
 Plug 'rakr/vim-two-firewatch'
@@ -79,7 +80,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'ludovicchabant/vim-gutentags' " ctags
 " Plug 'ycm-core/YouCompleteMe'
 Plug 'Shougo/echodoc.vim'
-Plug 'davidhalter/jedi-vim'     " Python completetion
+" Plug 'davidhalter/jedi-vim'     " Python completetion
 
 " Git
 Plug 'mhinz/vim-signify'        " Light gitgutter
@@ -106,6 +107,7 @@ syntax enable                   " highlight syntax
 syntax on                       " replace default
 let g:alduin_Shout_Become_Ethereal = 1
 let g:alduin_Shout_Fire_Breath = 1
+let g:dracula_italic = 0
 let g:PaperColor_Theme_Options = {
   \   'language': {
   \     'python': {
@@ -124,7 +126,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 set background=dark
-colorscheme alduin
+colorscheme dracula
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status line (Powered by lightline plugin)
